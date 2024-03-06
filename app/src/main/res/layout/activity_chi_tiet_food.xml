@@ -55,81 +55,83 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
-
+            <ImageView
+                android:id="@+id/imgFavorite"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="end"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/baseline_favorite_border_24" />
 
             <ImageView
                 android:id="@+id/hinhfood"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="385dp"
+                android:layout_height="385dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_bg"
                 android:scaleType="centerCrop"
                 android:src="@drawable/pz2"
                 app:cardCornerRadius="8dp" />
 
-            <!-- Icon yêu thích -->
-            <ImageView
-                android:id="@+id/imgFavorite"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_gravity="end"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/baseline_favorite_border_24" />
 
-            <!-- Giá thực phẩm -->
+            <TextView
+                android:id="@+id/tenthucpham"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Pizza"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
             <TextView
                 android:id="@+id/giathucpham"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="100000"
-                android:textColor="#FF7269"
-                android:textSize="20sp"
+                android:textColor="@color/button"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp" />
 
-            <!-- Layout cho nút giảm và tăng số lượng -->
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="8dp">
 
-                <!-- Nút giảm số lượng -->
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnMinus"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/button_login"
                     android:text="-"
-                    android:textColor="#FF7269"
+                    android:textColor="@color/black"
                     android:textSize="18sp" />
 
-                <!-- Số lượng sản phẩm -->
                 <TextView
                     android:id="@+id/txtQuantity"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:text="1"
-                    android:textColor="#FF7269"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:gravity="center" />
 
-                <!-- Nút tăng số lượng -->
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnPlus"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:text="+"
-                    android:textColor="#FF7269"
+                    android:textColor="@color/black"
                     android:background="@drawable/button_login"
                     android:textSize="18sp" />
 
             </LinearLayout>
 
-            <!-- Nút mua -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -139,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mua"
-                    android:textColor="#FF7269"
+                    android:textColor="@color/black"
                     android:elevation="4dp"
                     android:background="@drawable/button_login"
                     android:layout_marginTop="8dp" />
@@ -158,10 +160,9 @@
                     android:drawableRight="@drawable/baseline_add_shopping_cart_24"
                     android:elevation="4dp"
                     android:text="Thêm vào giỏ hàng"
-                    android:textColor="#FF7269" />
+                    android:textColor="@color/black" />
             </RelativeLayout>
 
-            <!-- Chi tiết sản phẩm -->
             <TextView
                 android:id="@+id/tvChiTiet"
                 android:layout_width="wrap_content"
@@ -171,7 +172,6 @@
                 android:textStyle="bold"
                 android:layout_marginTop="16dp" />
 
-            <!-- Mô tả chi tiết sản phẩm -->
             <TextView
                 android:id="@+id/tvMoTaChiTiet"
                 android:layout_width="match_parent"
@@ -180,7 +180,6 @@
                 android:textSize="16sp"
                 android:layout_marginTop="8dp" />
 
-            <!-- Xuất xứ -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -66,4 +66,5 @@
     <color name="goldenrod">#DAA520</color>
     <color name="greenyellow">#ADFF2F</color>
     <color name="honeydew">#F0FFF0</color>
+    <color name="button">#FF7269</color>
 </resources>

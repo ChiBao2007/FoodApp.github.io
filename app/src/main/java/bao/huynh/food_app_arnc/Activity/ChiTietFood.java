@@ -33,7 +33,7 @@ import bao.huynh.food_app_arnc.Service.SERVER;
 public class ChiTietFood extends AppCompatActivity {
 
     ImageView imgFood, imgFavorite;
-    TextView giathucpham, mota, xuatxu, txtQuantity;
+    TextView giathucpham, mota, xuatxu, txtQuantity, tenthucpham;
 
     AppCompatButton btnBuy, btnMinus, btnPlus,btnAdd;
     MaterialToolbar toolbarChiTiet;
@@ -59,6 +59,7 @@ public class ChiTietFood extends AppCompatActivity {
         btnPlus = findViewById(R.id.btnPlus);
         btnBuy =findViewById(R.id.btnBuy);
         btnAdd = findViewById(R.id.btnAdd);
+        tenthucpham = findViewById(R.id.tenthucpham);
 
 
 
@@ -207,6 +208,7 @@ public class ChiTietFood extends AppCompatActivity {
         // Hiển thị thông tin chi tiết
         if (food != null) {
             Picasso.get().load(SERVER.pathImages + food.getHinhthucan()).into(imgFood);
+            tenthucpham.setText(food.getTenthucan());
             giathucpham.setText(food.getDongia());
             mota.setText(food.getMota());
             xuatxu.setText(food.getXuatxu());
