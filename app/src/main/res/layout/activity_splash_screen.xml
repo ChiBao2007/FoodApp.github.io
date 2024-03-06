@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <!-- Ảnh background -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/guidelineCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/gradientView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/gradient"
+        app:layout_constraintBottom_toTopOf="@id/guidelineCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Guideline để chia màn hình thành 2 phần -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- Nội dung ở phần trên của màn hình -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/guidelineCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </LinearLayout>
+
+
+    <!-- Nội dung ở phần dưới của màn hình -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guidelineCenter">
+        <TextView
+            android:layout_width="326.73dp"
+            android:layout_height="200.69dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:onClick="login"
+            android:layout_width="359.69dp"
+            android:layout_height="63.99dp"
+            android:text="Login"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white"
+            android:background="@drawable/button_login"/>
+        <TextView
+            android:layout_width="159dp"
+            android:layout_height="18dp"
+            android:text="Don’t have an account?"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textColor="@color/darkblue"
+            android:layout_marginTop="40dp"
+            android:textSize="14dp"/>
+        <TextView
+            android:onClick="create"
+            android:layout_width="105dp"
+            android:layout_height="18dp"
+            android:text="Create Account"
+            android:textColor="#D9D9D9"
+            android:layout_gravity="center"
+            />
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
