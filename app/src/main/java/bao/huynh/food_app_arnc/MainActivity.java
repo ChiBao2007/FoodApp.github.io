@@ -44,7 +44,7 @@ import bao.huynh.food_app_arnc.Fragment.Fragment_Notification;
     Fragment_Message fragmentMessage = new Fragment_Message();
     Fragment currentfragment;
 
-    BadgeDrawable badgeNoti,badgeMess, badgeCart;
+    BadgeDrawable badgeNoti,badgeMess, badgeFavorite;
     FOODADAPTER foodadapter;
 
 
@@ -76,6 +76,7 @@ import bao.huynh.food_app_arnc.Fragment.Fragment_Notification;
                         break;
                     case R.id.mnuFavorite:
                         currentfragment = fragmentFavorite;
+                        badgeFavorite.setVisible(true);
                         break;
                     case R.id.mnuNotification:
                         currentfragment = fragment_notification;
@@ -123,6 +124,10 @@ import bao.huynh.food_app_arnc.Fragment.Fragment_Notification;
         badgeMess = bottomNavigationView.getOrCreateBadge(R.id.mnuMessage);
         badgeMess.setNumber(0);
         badgeMess.setBackgroundColor(Color.RED);
+
+        badgeFavorite = bottomNavigationView.getOrCreateBadge(R.id.mnuFavorite);
+        badgeFavorite.setNumber(0);
+        badgeFavorite.setBackgroundColor(Color.RED);
 
 
     }

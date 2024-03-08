@@ -1,6 +1,8 @@
 package bao.huynh.food_app_arnc.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,8 +24,8 @@ public class Login extends AppCompatActivity implements LoginCallback {
         setContentView(R.layout.activity_login);
 
         // Khởi tạo các EditText
-        emailEditText = findViewById(R.id.editText2);
-        passwordEditText = findViewById(R.id.editText5);
+        emailEditText = findViewById(R.id.edtEmail);
+        passwordEditText = findViewById(R.id.edtPass);
     }
 
     public void back(View view) {
@@ -39,6 +41,7 @@ public class Login extends AppCompatActivity implements LoginCallback {
             @Override
             public void onSuccess(JSONObject response) {
                 // Đăng nhập thành công
+                @SuppressLint("UnsafeOptInUsageError")
                 Intent intent = new Intent(Login.this, MainActivity.class);
                 startActivity(intent);
                 Toast.makeText(Login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();

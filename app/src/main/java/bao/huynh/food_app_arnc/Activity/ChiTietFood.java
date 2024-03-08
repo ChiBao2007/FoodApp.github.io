@@ -26,6 +26,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import bao.huynh.food_app_arnc.Fragment.FragmentCard;
+import bao.huynh.food_app_arnc.Fragment.FragmentFavorite;
 import bao.huynh.food_app_arnc.MODEL.CART;
 import bao.huynh.food_app_arnc.MODEL.FOOD;
 import bao.huynh.food_app_arnc.R;
@@ -162,12 +163,20 @@ public class ChiTietFood extends AppCompatActivity {
 
                 // Chuẩn bị dữ liệu để truyền cho FragmentCard
                 Bundle bundle = new Bundle();
-                bundle.putInt("quantity", quantity);
+//                bundle.putInt("quantity", quantity);
                 bundle.putSerializable("food", food);
 
                 // Tạo FragmentCard và set dữ liệu vào
                 FragmentCard fragmentCard = new FragmentCard();
                 fragmentCard.setArguments(bundle);
+
+                FragmentCard.list.add(new CART(
+                        food.getMathucan(),
+                        food.getTenthucan(),
+                        food.getHinhthucan(),
+                        food.getDongia(),
+                        ""+quantity
+                ));
 
 
                 txtQuantity.setText("1");
@@ -193,9 +202,23 @@ public class ChiTietFood extends AppCompatActivity {
                     Toast.makeText(ChiTietFood.this, "Đã xóa khỏi danh sách yêu thích", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    // Cập nhật biểu tượng yêu thích
+
                     imgFavorite.setImageResource(R.drawable.baseline_favorite_24);
                     isFavorite[0] = true;
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("favorite", food);
+
+                    FragmentFavorite fragmentFavorite = new FragmentFavorite();
+                    fragmentFavorite.setArguments(bundle);
+
+//                    FragmentManager fragmentManager = getSupportFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.framerate, fragmentFavorite);
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
+
+                    FragmentFavorite.favorites.add(food);
 
                     Toast.makeText(ChiTietFood.this, "Đã thêm vào danh sách yêu thích", Toast.LENGTH_SHORT).show();
                 }

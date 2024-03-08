@@ -46,7 +46,7 @@ public class FragmentCard extends Fragment {
         if (bundle != null) {
             int quantity = bundle.getInt("soluong", 0);
             FOOD food = (FOOD) bundle.getSerializable("food");
-
+//            FOOD food1 = (FOOD) bundle.getSerializable("food1");
 //            capNhat(food, quantity);
 
             // Thêm sản phẩm vào danh sách giỏ hàng

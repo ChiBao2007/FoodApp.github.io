@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import bao.huynh.food_app_arnc.Activity.ChiTietFood;
 import bao.huynh.food_app_arnc.MODEL.FOOD;
@@ -32,6 +33,7 @@ public class FOODADAPTER extends RecyclerView.Adapter<FOODADAPTER.FOODVIEWHOLDER
         this.context = context;
         this.data = data;
         this.filterdata = new ArrayList<>(data);
+
     }
 
     @NonNull

@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="food@example.com"
-        android:id="@+id/tvHeader2"
+        android:id="@+id/tvEmail"
         android:layout_below="@id/tvHeader1"
         android:textSize="14sp"
         android:textColor="@android:color/white"
@@ -42,7 +42,7 @@
         android:id="@+id/account"
         android:layout_width="86dp"
         android:layout_height="73dp"
-        android:layout_below="@id/tvHeader2"
+        android:layout_below="@id/tvEmail"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/baseline_account_circle_24" />

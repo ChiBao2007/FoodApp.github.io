@@ -1,5 +1,6 @@
 package bao.huynh.food_app_arnc.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -40,7 +42,7 @@ public class CARTADAPTER extends RecyclerView.Adapter<CARTADAPTER.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CARTADAPTER.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CARTADAPTER.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         CART food = data.get(position);
 
         // Hiển thị thông tin của mỗi mục trong danh sách giỏ hàng
@@ -56,6 +58,22 @@ public class CARTADAPTER extends RecyclerView.Adapter<CARTADAPTER.ViewHolder> {
                 Intent intent = new Intent(context, Cart.class);
                 intent.putExtra("cart", food);
                 context.startActivity(intent);
+            }
+        });
+
+        holder.btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tenthucan = data.get(position).getTenthucan();
+                xoa(position);
+
+                Toast.makeText(context, "Đã xóa "+tenthucan, Toast.LENGTH_SHORT).show();
+            }
+
+            private void xoa(int position) {
+                data.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, data.size());
             }
         });
     }
@@ -77,10 +95,5 @@ public class CARTADAPTER extends RecyclerView.Adapter<CARTADAPTER.ViewHolder> {
             btnDel = itemView.findViewById(R.id.cartItemBtnRemove);
             imgFood = itemView.findViewById(R.id.cartItemImage);
         }
-    }
-    public void updateQuantity(int position, String newQuantity) {
-        CART food = data.get(position);
-        food.setSoluong(newQuantity);
-        notifyItemChanged(position);
     }
 }

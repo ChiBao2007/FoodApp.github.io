@@ -1,6 +1,8 @@
 package bao.huynh.food_app_arnc.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,15 +17,16 @@ import bao.huynh.food_app_arnc.Service.APIService;
 public class Register extends AppCompatActivity implements RegisterCallback {
     private EditText usernameEditText, emailEditText, passwordEditText;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
         // Khởi tạo các EditText
-        usernameEditText = findViewById(R.id.editText); // Đặt ID tương ứng
-        emailEditText = findViewById(R.id.editText2);
-        passwordEditText = findViewById(R.id.editText5);
+        usernameEditText = findViewById(R.id.edtName);
+        emailEditText = findViewById(R.id.edtEmailR);
+        passwordEditText = findViewById(R.id.edtPassR);
     }
 
     public void register(View view) {

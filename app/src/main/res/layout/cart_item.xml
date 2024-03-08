@@ -39,7 +39,6 @@
                 android:textSize="13dp"
                 android:textStyle="bold" />
 
-            <!-- Giá tiền -->
             <TextView
                 android:id="@+id/cartItemPrice"
                 android:layout_width="wrap_content"

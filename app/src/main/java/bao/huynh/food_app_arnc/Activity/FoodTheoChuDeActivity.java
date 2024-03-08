@@ -59,7 +59,7 @@ public class FoodTheoChuDeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         categories = (CATEGORIES) intent.getSerializableExtra("ChudeObject");
 
-        foodadapter = new FOODADAPTER(this, food_data);
+        foodadapter = new FOODADAPTER(this,food_data);
         rvFoodtheochude.setAdapter(foodadapter);
         rvFoodtheochude.setLayoutManager(new GridLayoutManager(this, 2));
 
