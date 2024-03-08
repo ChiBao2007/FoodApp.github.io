@@ -17,17 +17,19 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import bao.huynh.food_app_arnc.Activity.Cart;
+import bao.huynh.food_app_arnc.MODEL.CART;
 import bao.huynh.food_app_arnc.MODEL.FOOD;
 import bao.huynh.food_app_arnc.R;
 import bao.huynh.food_app_arnc.Service.SERVER;
 
 public class CARTADAPTER extends RecyclerView.Adapter<CARTADAPTER.ViewHolder> {
-    private List<FOOD> data;
+    private List<CART> data;
     Context context;
 
-    public CARTADAPTER(List<FOOD> data, Context context) {
+    public CARTADAPTER(List<CART> data, Context context) {
         this.data = data;
         this.context = context;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -39,14 +41,14 @@ public class CARTADAPTER extends RecyclerView.Adapter<CARTADAPTER.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CARTADAPTER.ViewHolder holder, int position) {
-        FOOD food = data.get(position);
+        CART food = data.get(position);
 
         // Hiển thị thông tin của mỗi mục trong danh sách giỏ hàng
         holder.imgFood.setImageResource(R.drawable.no_image);
-        Picasso.get().load(SERVER.pathImages + food.hinhthucan).into(holder.imgFood);
+        Picasso.get().load(SERVER.pathImages + food.getHinhthucan()).into(holder.imgFood);
         holder.tvCartItemName.setText(food.getTenthucan());
         holder.tvCartItemPrice.setText(food.getDongia() + " đồng");
-
+        holder.tvCartItemQuantity.setText(food.getSoluong());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,8 +79,8 @@ public class CARTADAPTER extends RecyclerView.Adapter<CARTADAPTER.ViewHolder> {
         }
     }
     public void updateQuantity(int position, String newQuantity) {
-        FOOD food = data.get(position);
-        food.setSoluongban(newQuantity);
+        CART food = data.get(position);
+        food.setSoluong(newQuantity);
         notifyItemChanged(position);
     }
 }

@@ -26,6 +26,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import bao.huynh.food_app_arnc.Fragment.FragmentCard;
+import bao.huynh.food_app_arnc.MODEL.CART;
 import bao.huynh.food_app_arnc.MODEL.FOOD;
 import bao.huynh.food_app_arnc.R;
 import bao.huynh.food_app_arnc.Service.SERVER;
@@ -39,8 +40,7 @@ public class ChiTietFood extends AppCompatActivity {
     MaterialToolbar toolbarChiTiet;
     SearchView searchView;
     private  FOOD food;
-
-
+    static int quantity = 1;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,7 @@ public class ChiTietFood extends AppCompatActivity {
         btnBuy =findViewById(R.id.btnBuy);
         btnAdd = findViewById(R.id.btnAdd);
         tenthucpham = findViewById(R.id.tenthucpham);
+
 
 
 
@@ -88,14 +89,11 @@ public class ChiTietFood extends AppCompatActivity {
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tangSoLuong();
-            }
-
-            private void tangSoLuong() {
-                int quantity = Integer.parseInt(txtQuantity.getText().toString());
                 quantity++;
                 txtQuantity.setText(String.valueOf(quantity));
             }
+
+
         });
         //ấn mua
         btnBuy.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +114,7 @@ public class ChiTietFood extends AppCompatActivity {
 
                 // Chuẩn bị dữ liệu để truyền cho FragmentCard
                 Bundle bundle = new Bundle();
-                bundle.putInt("quantity", quantity);
+                bundle.putInt("soluong", quantity);
                 bundle.putSerializable("food", food);
 
                 // Tạo FragmentCard và set dữ liệu vào
@@ -129,6 +127,15 @@ public class ChiTietFood extends AppCompatActivity {
                 fragmentTransaction.replace(R.id.framerate, fragmentCard);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+
+                FragmentCard.list.add(new CART(
+                        food.getMathucan(),
+                        food.getTenthucan(),
+                        food.getHinhthucan(),
+                        food.getDongia(),
+                        ""+quantity
+                        ));
+
 
                 // Reset số lượng về 1
                 txtQuantity.setText("1");
@@ -162,7 +169,11 @@ public class ChiTietFood extends AppCompatActivity {
                 FragmentCard fragmentCard = new FragmentCard();
                 fragmentCard.setArguments(bundle);
 
+
+                txtQuantity.setText("1");
+
                 Toast.makeText(ChiTietFood.this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+
             }
         });
 

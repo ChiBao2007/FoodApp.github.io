@@ -13,10 +13,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.badge.BadgeUtils;
+import com.google.android.material.badge.ExperimentalBadgeUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
@@ -28,7 +30,7 @@ import bao.huynh.food_app_arnc.Fragment.FragmentHome;
 import bao.huynh.food_app_arnc.Fragment.Fragment_Message;
 import bao.huynh.food_app_arnc.Fragment.Fragment_Notification;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+@ExperimentalBadgeUtils public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     BottomNavigationView bottomNavigationView;
@@ -122,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         badgeMess.setNumber(0);
         badgeMess.setBackgroundColor(Color.RED);
 
+
     }
 
 
@@ -159,6 +162,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.notification_menu, menu);
+
+//        badgeCart = BadgeDrawable.create(this);
+//        badgeCart.setBackgroundColor(Color.RED);
+//        badgeCart.setNumber(0);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -210,7 +217,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Toast.makeText(this, "Giỏ hàng của bạn", Toast.LENGTH_SHORT).show();
     }
-
 
     void LoadFragment(Fragment f) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

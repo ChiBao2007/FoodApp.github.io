@@ -18,14 +18,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bao.huynh.food_app_arnc.Adapter.CARTADAPTER;
+import bao.huynh.food_app_arnc.MODEL.CART;
 import bao.huynh.food_app_arnc.MODEL.FOOD;
 import bao.huynh.food_app_arnc.R;
 
 public class FragmentCard extends Fragment {
+    public static List<CART> list = new ArrayList<>();
     private TextView tvCartHeader;
     private RecyclerView recyclerView;
 
-    private List<FOOD> cartItemList;
+//    private List<FOOD> cartItemList;
     private CARTADAPTER cartAdapter;
 
     @SuppressLint("MissingInflatedId")
@@ -37,39 +39,41 @@ public class FragmentCard extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
 
 
-        cartItemList = new ArrayList<>();
+//        cartItemList = new ArrayList<>();
 
         // Lấy dữ liệu từ Bundle
         Bundle bundle = getArguments();
         if (bundle != null) {
-            int quantity = bundle.getInt("quantity", 0);
+            int quantity = bundle.getInt("soluong", 0);
             FOOD food = (FOOD) bundle.getSerializable("food");
 
-//            updateCartItemQuantity(food, quantity);
+//            capNhat(food, quantity);
 
             // Thêm sản phẩm vào danh sách giỏ hàng
-            cartItemList.add(food);
+//            cartItemList.add(food);
 
-            setupRecyclerView();
+
         }
-        
 
+        setupRecyclerView();
 
         return view;
     }
 
-//    private void updateCartItemQuantity(FOOD food, int quantity) {
+//    private void capNhat(FOOD food, int quantity) {
 //        for (FOOD item : cartItemList) {
 //            if (item.getMathucan().equals(food.getMathucan())) {
 //                item.setSoluongban(String.valueOf(quantity));
-//                break;
+//                return;
 //            }
 //        }
+//        food.setSoluongban(String.valueOf(quantity));
+////        cartItemList.add(food);
 //    }
 
     private void setupRecyclerView() {
-        cartAdapter = new CARTADAPTER(cartItemList, getContext());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        cartAdapter = new CARTADAPTER(list, getContext());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
         recyclerView.setAdapter(cartAdapter);
     }
 
