@@ -5,7 +5,9 @@
         android:title=""
         android:icon="@drawable/baseline_shopping_cart_24"
         android:iconTint="@color/white"
-        app:showAsAction="always"/>
+        app:showAsAction="always"
+        android:actionLayout="@layout/badge_layout"/>
+
 
 
 

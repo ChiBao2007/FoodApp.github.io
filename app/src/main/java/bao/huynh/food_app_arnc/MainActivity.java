@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.badge.BadgeDrawable;
@@ -24,9 +26,13 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 import bao.huynh.food_app_arnc.Adapter.FOODADAPTER;
+import bao.huynh.food_app_arnc.Fragment.FragmentAccount;
 import bao.huynh.food_app_arnc.Fragment.FragmentCard;
 import bao.huynh.food_app_arnc.Fragment.FragmentFavorite;
 import bao.huynh.food_app_arnc.Fragment.FragmentHome;
+import bao.huynh.food_app_arnc.Fragment.FragmentMap;
+import bao.huynh.food_app_arnc.Fragment.FragmentPromotion;
+import bao.huynh.food_app_arnc.Fragment.FragmentSupport;
 import bao.huynh.food_app_arnc.Fragment.Fragment_Message;
 import bao.huynh.food_app_arnc.Fragment.Fragment_Notification;
 
@@ -42,6 +48,11 @@ import bao.huynh.food_app_arnc.Fragment.Fragment_Notification;
     FragmentFavorite fragmentFavorite = new FragmentFavorite();
     Fragment_Notification fragment_notification = new Fragment_Notification();
     Fragment_Message fragmentMessage = new Fragment_Message();
+    FragmentSupport fragmentSupport = new FragmentSupport();
+
+    FragmentAccount fragmentAccount = new FragmentAccount();
+    FragmentPromotion fragmentPromotion = new FragmentPromotion();
+    FragmentMap fragmentMap = new FragmentMap();
     Fragment currentfragment;
 
     BadgeDrawable badgeNoti,badgeMess, badgeFavorite;
@@ -168,12 +179,42 @@ import bao.huynh.food_app_arnc.Fragment.Fragment_Notification;
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.notification_menu, menu);
 
+//        MenuItem cartMenuItem = menu.findItem(R.id.mnu_cart);
+
+//        cartMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(@NonNull MenuItem item) {
+//                handleCartIconClick();
+//                return true;
+//            }
+//        });
+
+//        updateCartBadge(cartMenuItem.getActionView(), 5);
+
 //        badgeCart = BadgeDrawable.create(this);
 //        badgeCart.setBackgroundColor(Color.RED);
 //        badgeCart.setNumber(0);
 
         return super.onCreateOptionsMenu(menu);
+        
     }
+
+//    private void updateCartBadge(View view, int i) {
+//        if (view != null) {
+//            RelativeLayout badgeLayout = view.findViewById(R.id.badge_layout);
+//            if (badgeLayout != null) {
+//                TextView badgeTextView = badgeLayout.findViewById(R.id.badge);
+//                if (badgeTextView != null) {
+//                    if (i > 0) {
+//                        badgeTextView.setText(String.valueOf(i));
+//                        badgeTextView.setVisibility(View.VISIBLE);
+//                    } else {
+//                        badgeTextView.setVisibility(View.GONE);
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 
 
@@ -185,18 +226,23 @@ import bao.huynh.food_app_arnc.Fragment.Fragment_Notification;
                 currentfragment = fragmentHome;
                 break;
             case R.id.mnu_info:
+                currentfragment = fragmentAccount;
                 Toast.makeText(this, "Infomation", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.mnu_Promotion:
+                currentfragment = fragmentPromotion;
                 Toast.makeText(this, "Promotion", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.mnuSupport:
+                currentfragment = fragmentSupport;
                 Toast.makeText(this, "Support", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.mnuMap:
+                currentfragment = fragmentMap;
                 Toast.makeText(this, "Map", Toast.LENGTH_SHORT).show();
                 break;
         }
+        LoadFragment(currentfragment);
         return true;
     }
     @Override
